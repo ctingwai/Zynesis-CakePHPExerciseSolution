@@ -13,7 +13,9 @@ Please follow the instructions in the previous section to setup the database.
 Installation
 ------------
 Installation is as simple as setting database tables using CakePHP shell, assume you are in the `app` directory:
-    sh Console/cake schema create
+
+	$ sh Console/cake schema create
+
 Once it is configured, point your browser to this application.
 
 Some notes on permission
@@ -23,7 +25,8 @@ Make sure that `app/tmp` and `app/webroot/product_img` is writable by the web se
 Using CakePHP Shell
 -------------------
 CakePHP shell require `php` command, make sure that it is in your PATH environment by issuing, assume that you are using lampp:
-    $ export PATH=$PATH:/opt/lampp/bin
+
+	$ export PATH=$PATH:/opt/lampp/bin
 
 Some user also reported that they have difficulties using CakePHP shell if they are not in `app/` directory. So make sure that you change directory to `app/`
 
@@ -36,8 +39,13 @@ Default image has to be named `default_no_image_found.png` in `app/webroot/produ
 Administrator
 -------------
 Admin CakePHP shell command is provided to ease the tasks for managing administrator. To add admininstrator:
-    sh Console/cake admin add
+
+	$ sh Console/cake admin add
+
 To remove an admin:
-    sh Console/cake admin remove
+
+	$ sh Console/cake admin remove
+
 To change an admin password:
-    sh Console/cake admin passwd
+
+	$ sh Console/cake admin passwd
