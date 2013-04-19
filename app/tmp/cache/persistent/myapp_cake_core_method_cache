@@ -1,2 +1,2 @@
-1366304219
-a:1:{s:4:"name";a:4:{s:32:"7aade53b7006f5105294830efe5f47f5";s:6:"`cake`";s:32:"5e5ffe68f77f8d86476d0bde2f439ff4";s:10:"`products`";s:32:"92f24a1f999095d1e7e6125d7916d913";s:7:"`title`";s:32:"e5bd9b3159d5131e72df1fdc02092801";s:7:"`price`";}}
+1366345568
+a:2:{s:4:"name";a:7:{s:32:"7aade53b7006f5105294830efe5f47f5";s:6:"`cake`";s:32:"5cd926c4aebf89692f9cbc3b678f9c98";s:17:"`Product`.`title`";s:32:"5e5ffe68f77f8d86476d0bde2f439ff4";s:10:"`products`";s:32:"d2c23d1b4feeec456d72cdc94cc44595";s:4:"`id`";s:32:"e1dcb05a9cc8d383d4cacde722ccbb3b";s:9:"`Product`";s:32:"47eb7bb09414c64f779510914712b6ee";s:7:"`count`";s:32:"efd19c9519bcea844a36728047557e36";s:14:"`Product`.`id`";}s:6:"fields";a:2:{s:32:"f11ee7dbb048a02ff059c7ae1828367d";a:1:{i:0;s:17:"`Product`.`title`";}s:32:"1938e60c401edaca50d14df91a149283";a:1:{i:0;s:19:"COUNT(*) AS `count`";}}}

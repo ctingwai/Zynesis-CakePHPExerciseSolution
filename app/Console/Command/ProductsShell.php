@@ -89,12 +89,19 @@ class ProductsShell extends AppShell {
 				$image = $this->args[3];
 				$ext = pathinfo($this->args[3], PATHINFO_EXTENSION);
 				if(!isset($ext)) {
-					$this->out('Unable to determine file extension. Not copying image');
+					//No extension
+					$this->out('Unable to determine file extension. Not copying image.');
+					unset($image);
+				} else if($ext != 'jpg' && $ext != 'jpeg' && $ext != 'png' && $ext != 'gif') {
+					//Not an image
+					$this->out('Not an image. Please use only jpg, jpeg, png and gif images. Not copying image.');
 					unset($image);
 				}
-			} else if(!file_exists($this->args[3])) {
+			} else if(isset($this->args[3]) && !file_exists($this->args[3])) {
 				$this->out("File {$this->args[3]} not found. Not copying image.");
 				unset($image);
+			} else {
+				$this->out('No image supplied. Not copying image.');
 			}
 
 			//Proceed with database operations
@@ -115,7 +122,44 @@ class ProductsShell extends AppShell {
 		}
 	}
 
-	private function remove() {}
+	private function remove() {
+		if(count($this->args) >= 2) {
+			$id = $this->args[1];
+			$title = $this->Product->find('first', array(
+				'conditions' => array('id' => $id),
+				'fields' => 'title'
+			));
+
+			if(count($title) > 0) {
+				$title = $title['Product']['title'];
+				//Check for image
+				$image = glob("webroot/product_img/$title.*");
+				$deleteImg = false;
+				if($image) {
+					$image = $image[0];
+					while(empty($deleteImg) || ($deleteImg != 'y' && $deleteImg != 'n')) {
+						$deleteImg = $this->in('Image found. Delete? (y/n) ');
+					}
+					if($deleteImg == 'y')
+						$deleteImg = true;
+				}
+				//Database deletion
+				if($this->Product->delete($id)) {
+					$this->out('Product removed from database.');
+					//Image deletion
+					if($deleteImg && unlink($image)) {
+						$this->out('Image deleted.');
+					}
+				}
+			} else {
+				$this->out('ID not found, please use "list" command to determine product ID.');
+			}
+		} else {
+			$this->out('Missing arguments');
+			$this->help('remove');
+		}
+	}
+
 	private function edit() {}
 }
 ?>
